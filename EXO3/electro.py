@@ -1,17 +1,15 @@
+def sum_resistances(resistances):
+    return sum(resistances)
+
+def reciprocal_sum(resistances):
+    return sum(1 / r for r in resistances if r != 0)
+
 def calculate_series_resistance(resistances):
-    total = 0
-    for r in resistances:
-        total += r
-    return total
+    return sum_resistances(resistances)
 
 def calculate_parallel_resistance(resistances):
-    total = 0
-    for r in resistances:
-        if r != 0:
-            total += 1 / r
-    if total != 0:
-        return 1 / total
-    return 0
+    reciprocal = reciprocal_sum(resistances)
+    return 1 / reciprocal if reciprocal != 0 else 0
 
 resistances_series = [10, 20, 30]
 resistances_parallel = [10, 20, 30]
